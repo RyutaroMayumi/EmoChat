@@ -29,6 +29,7 @@ using System.Windows.Threading;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.ProjectOxford.Emotion;
 using Microsoft.ProjectOxford.Emotion.Contract;
@@ -44,6 +45,14 @@ namespace EmoChat
     public delegate void writeImageDelegate(Bitmap bitmap);
     public delegate string readTextDelegate();
 
+    // 設定クラス
+    public class Config
+    {
+        public string UserName { get; set; }
+        public string RemoteAddress { get; set; }
+        public string PortNumber { get; set; }
+    }
+
     public partial class MainWindow : Window
     {
         CvCapture camera = null;
@@ -53,6 +62,8 @@ namespace EmoChat
         string faceL = "faceL.jpg";
         string faceR = "faceR.jpg";
         string srcimg = "fd7b29ec-s.jpg";
+        string json = "config.json";
+        string key = "subscriptionkey";
         int encode = 932;   // Shift-JIS
         Dictionary<string, IplImage> stamps = null;
         DispatcherTimer dispatcherTimer;
@@ -63,7 +74,13 @@ namespace EmoChat
 
             // カメラを設定
             camera = Cv.CreateCameraCapture(0);
-            //face = new IplImage();
+
+            // 設定読み込み
+            StreamReader sr = new StreamReader(json, Encoding.GetEncoding(encode));
+            var config = JsonConvert.DeserializeObject<Config>(sr.ReadToEnd());
+            textBox1.Text = config.RemoteAddress;
+            textBox2.Text = config.PortNumber;
+            textBox3.Text = config.UserName;
 
             // スタンプ画像を生成
             stamps = new Dictionary<string, IplImage>();
@@ -309,7 +326,7 @@ namespace EmoChat
             NetworkStream ns = tc.GetStream();
 
             // Messageの送信
-            if (textBox.Text != "")
+            if (ns.CanWrite)
             {
                 // 送信データのタイプ（テキスト）
                 var typ = new byte[1];
@@ -332,7 +349,7 @@ namespace EmoChat
             }
 
             // 画像の送信
-            if (face != null)
+            if (ns.CanWrite && face != null)
             {
                 // 送信データのタイプ（画像）
                 var typ = new byte[1];
@@ -416,7 +433,8 @@ namespace EmoChat
         // 公式のライブラリを利用する場合
         private async Task<Emotion[]> UploadAndDetectEmotions(string imageFilePath)
         {
-            string subscriptionKey = "your_key";
+            StreamReader sr = new StreamReader(key);
+            string subscriptionKey = sr.ReadToEnd();
             EmotionServiceClient emotionServiceClient = new EmotionServiceClient(subscriptionKey);
             try
             {

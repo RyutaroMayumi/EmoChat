@@ -15,12 +15,12 @@
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="92,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="240" Margin="10,10,0,0" VerticalAlignment="Top" Width="320"/>
         <Button x:Name="button" Content="Send" HorizontalAlignment="Left" Margin="509,289,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <Label x:Name="label5" Content=":" HorizontalAlignment="Left" Margin="231,289,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="250,289,0,0" TextWrapping="Wrap" Text="8888" VerticalAlignment="Top" Width="64"/>
+        <Label x:Name="label1" Content=":" HorizontalAlignment="Left" Margin="231,289,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="250,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="64"/>
         <Image x:Name="image1" HorizontalAlignment="Left" Height="50" Margin="280,10,0,0" VerticalAlignment="Top" Width="50"/>
-        <Label x:Name="label3" Content="User:" HorizontalAlignment="Left" Margin="335,289,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="382,289,0,0" TextWrapping="Wrap" Text="anonymous" VerticalAlignment="Top" Width="122"/>
-        <Label x:Name="label1" Content="Connect to:" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="User:" HorizontalAlignment="Left" Margin="335,289,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="382,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="122"/>
+        <Button x:Name="button1" Content="Connect to" HorizontalAlignment="Left" Margin="10,289,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
