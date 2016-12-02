@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="EmoChat" Height="350" Width="600">
     <Grid>
-        <RichTextBox x:Name="richTextBox" HorizontalAlignment="Left" Height="242" Margin="335,10,0,0" VerticalAlignment="Top" Width="249" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Block.LineHeight="1">
+        <RichTextBox x:Name="richTextBox" HorizontalAlignment="Left" Height="242" Margin="335,10,0,0" VerticalAlignment="Top" Width="249" VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Block.LineHeight="1" Background="White" Foreground="Black">
             <FlowDocument/>
         </RichTextBox>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="92,257,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="492" KeyDown="textBox_KeyDown"/>
